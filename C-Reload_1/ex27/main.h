@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboldino <dboldino@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/17 15:01:02 by dboldino          #+#    #+#             */
-/*   Updated: 2026/08/17 17:21:24 by dboldino         ###   ########.fr       */
+/*   Created: 2026/08/18 16:24:20 by dboldino          #+#    #+#             */
+/*   Updated: 2026/08/18 16:26:20 by dboldino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+#ifndef MAIN_H
+# define MAIN_H
 
-void	ft_print_numbers(void)
-{
-	char	i;
+int		size_of(char *str);
+void	ft_print(char *str, int size);
+void	error_check(int param);
+void	write_file(int fd);
 
-	i = '0';
-	while (i <= '9')
-	{
-		ft_putchar(i);
-		i++;
-	}
-}
+#endif

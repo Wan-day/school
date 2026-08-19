@@ -1,0 +1,81 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dboldino <dboldino@student.42prague.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/18 16:24:14 by dboldino          #+#    #+#             */
+/*   Updated: 2026/08/19 15:01:45 by dboldino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <fcntl.h>
+#include <unistd.h>
+#include "main.h"
+
+int	size_of(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+void	ft_print(char *str, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
+
+void	error_check(int param)
+{
+	if (param == 1)
+		ft_print("File name missing.\n", size_of("File name missing.\n"));
+	else if (param > 2)
+		ft_print("Too many arguments.\n", size_of("Too many arguments.\n"));
+	else if (param == -1)
+		ft_print("Cannot read file.\n", size_of("Cannot read file.\n"));
+}
+
+void	write_file(int fd)
+{
+	char	buf[32];
+	ssize_t	bytesread;
+
+	bytesread = 1;
+	while (bytesread > 0)
+	{
+		bytesread = read(fd, buf, sizeof(buf));
+		if (bytesread > 0)
+			ft_print(buf, bytesread);
+	}
+	if (bytesread == -1)
+		error_check(bytesread);
+}
+
+int	main(int argc, char **argv)
+{
+	int	fd;
+
+	if (argc != 2)
+	{
+		error_check(argc);
+		return (0);
+	}
+	else
+	{
+		fd = open(argv[1], O_RDONLY);
+		write_file(fd);
+		close(fd);
+		return (0);
+	}
+}

@@ -5,77 +5,75 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboldino <dboldino@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/17 15:52:22 by dboldino          #+#    #+#             */
-/*   Updated: 2026/08/17 17:15:25 by dboldino         ###   ########.fr       */
+/*   Created: 2026/07/14 14:33:41 by dboldino          #+#    #+#             */
+/*   Updated: 2026/08/18 14:51:21 by dboldino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c)
-{
-	write (1, &c, 1);
-}
+void	ft_putchar(char c);
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	while (*s1 && *s2 && *s1 == *s2)
+	int	i;
+
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0')
 	{
-		if (*s1 == *s2)
-		{
-			s1++;
-			s2++;
-		}
-		else
-			return (*s1 - *s2);
+		i++;
 	}
-	return (*s1 - *s2);
+	return (s1[i] - s2[i]);
 }
 
-void	sort_params(int argc, char **argv)
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+	ft_putchar('\n');
+}
+
+void	bubble_sort(char **str, int size)
 {
 	int		i;
 	int		j;
 	char	*temp;
 
-	i = 1;
+	i = 0;
 	j = 0;
-	if (argc > 2)
+	while (i < size - 1)
 	{
-		while (i < argc - 1)
+		if (ft_strcmp(str[i], str[i + 1]) > 0)
 		{
-			if (ft_strcmp(argv[i], argv[i + 1]) > 0)
-			{
-				temp = argv[i];
-				argv[i] = argv[i + 1];
-				argv[i + 1] = temp;
-				j++;
-			}
-			i++;
+			temp = str[i];
+			str[i] = str[i + 1];
+			str[i + 1] = temp;
+			j++;
 		}
+		i++;
 	}
 	if (j != 0)
-		sort_params(argc, argv);
+		bubble_sort(str, size);
 }
 
 int	main(int argc, char **argv)
 {
 	int	i;
 
-	i = 0;
-	if (argc > 2)
+	i = 1;
+	if (argc > 1)
 	{
-		sort_params(argc, argv);
-		while (i < argc)
+		bubble_sort(argv + 1, argc - 1);
+		while (i <= argc - 1)
 		{
-			while (*argv[i])
-			{
-				ft_putchar(*argv[i]);
-				argv[i]++;
-			}
-			ft_putchar('\n');
+			ft_putstr(argv[i]);
 			i++;
 		}
+		return (0);
 	}
 	return (0);
 }

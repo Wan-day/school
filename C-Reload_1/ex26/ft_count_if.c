@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_count_if.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboldino <dboldino@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/17 15:01:02 by dboldino          #+#    #+#             */
-/*   Updated: 2026/08/17 17:21:24 by dboldino         ###   ########.fr       */
+/*   Created: 2026/08/18 15:55:22 by dboldino          #+#    #+#             */
+/*   Updated: 2026/08/18 16:10:21 by dboldino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
-
-void	ft_print_numbers(void)
+int	ft_count_if(char **tab, int (*f)(char*))
 {
-	char	i;
+	int	result;
+	int	i;
 
-	i = '0';
-	while (i <= '9')
+	result = 0;
+	i = 0;
+	while (tab[i] != 0)
 	{
-		ft_putchar(i);
+		if (f(tab[i]) == 1)
+			result++;
 		i++;
 	}
+	return (result);
 }

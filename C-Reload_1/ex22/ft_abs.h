@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_abs.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboldino <dboldino@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/17 15:01:02 by dboldino          #+#    #+#             */
-/*   Updated: 2026/08/17 17:21:24 by dboldino         ###   ########.fr       */
+/*   Created: 2026/08/18 15:44:43 by dboldino          #+#    #+#             */
+/*   Updated: 2026/08/18 15:46:26 by dboldino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+#ifndef FT_ABS_H
+# define FT_ABS_H
 
-void	ft_print_numbers(void)
-{
-	char	i;
+# define ABS(Value) (Value < 0 ? -Value : Value)
 
-	i = '0';
-	while (i <= '9')
-	{
-		ft_putchar(i);
-		i++;
-	}
-}
+#endif

@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboldino <dboldino@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/17 15:01:02 by dboldino          #+#    #+#             */
-/*   Updated: 2026/08/17 17:21:24 by dboldino         ###   ########.fr       */
+/*   Created: 2026/08/18 15:37:52 by dboldino          #+#    #+#             */
+/*   Updated: 2026/08/18 16:14:53 by dboldino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+#include <stdlib.h>
 
-void	ft_print_numbers(void)
+int	*ft_range(int min, int max)
 {
-	char	i;
+	int	*result;
+	int	i;
 
-	i = '0';
-	while (i <= '9')
+	if (min >= max)
+		return (0);
+	result = malloc((max - min) * sizeof(int));
+	if (result == NULL)
+		return (0);
+	i = 0;
+	while (min < max)
 	{
-		ft_putchar(i);
+		result[i] = min;
+		min++;
 		i++;
 	}
+	return (result);
 }

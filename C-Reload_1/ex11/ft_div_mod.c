@@ -6,12 +6,12 @@
 /*   By: dboldino <dboldino@student.42prague.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/17 15:10:15 by dboldino          #+#    #+#             */
-/*   Updated: 2026/08/17 17:14:31 by dboldino         ###   ########.fr       */
+/*   Updated: 2026/08/18 14:36:47 by dboldino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_div_mod(int a, int b, int *div, int *mod)
 {
-	*div = *a / *b;
-	*mod = *a % *b;
+	*div = a / b;
+	*mod = a % b;
 }
